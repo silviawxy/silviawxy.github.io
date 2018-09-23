@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="小鹅通 冒泡时间复杂度：两层for循环嵌套，n平方 三次握手：第一次：客户端给服务器发送syn，即客户端请求建立联机第二次：服务器给客户端发送syn+ack，即服务器回复确认，请求建立联机第三次：客户端给服务器发送ack，即客户端回复联机确认  syn（同步，建立联机）ack（确认信息）FIN（结束）   四次挥手：第一次：client发送FIN第二次：server发送ack第三次：server发">
+<meta name="keywords" content="面试总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-09面试总结">
+<meta property="og:url" content="http://yoursite.com/2018/09/23/2018-09面试总结/index.html">
+<meta property="og:site_name" content="way 2 explore">
+<meta property="og:description" content="小鹅通 冒泡时间复杂度：两层for循环嵌套，n平方 三次握手：第一次：客户端给服务器发送syn，即客户端请求建立联机第二次：服务器给客户端发送syn+ack，即服务器回复确认，请求建立联机第三次：客户端给服务器发送ack，即客户端回复联机确认  syn（同步，建立联机）ack（确认信息）FIN（结束）   四次挥手：第一次：client发送FIN第二次：server发送ack第三次：server发">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-23T08:06:16.111Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018-09面试总结">
+<meta name="twitter:description" content="小鹅通 冒泡时间复杂度：两层for循环嵌套，n平方 三次握手：第一次：客户端给服务器发送syn，即客户端请求建立联机第二次：服务器给客户端发送syn+ack，即服务器回复确认，请求建立联机第三次：客户端给服务器发送ack，即客户端回复联机确认  syn（同步，建立联机）ack（确认信息）FIN（结束）   四次挥手：第一次：client发送FIN第二次：server发送ack第三次：server发">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/23/2018-09面试总结/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>2018-09面试总结 | way 2 explore</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">way 2 explore</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">坚持学习</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/23/2018-09面试总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="silviawxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="way 2 explore">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018-09面试总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-23 15:40:58 / 修改时间：16:06:16" itemprop="dateCreated datePublished" datetime="2018-09-23T15:40:58+08:00">2018-09-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="小鹅通"><a href="#小鹅通" class="headerlink" title="小鹅通"></a>小鹅通</h2><ol>
+<li><strong>冒泡时间复杂度</strong>：两层for循环嵌套，n平方</li>
+<li><p><strong>三次握手</strong>：<br>第一次：客户端给服务器发送syn，即客户端请求建立联机<br>第二次：服务器给客户端发送syn+ack，即服务器回复确认，请求建立联机<br>第三次：客户端给服务器发送ack，即客户端回复联机确认</p>
+<blockquote>
+<p>syn（同步，建立联机）<br>ack（确认信息）<br>FIN（结束）</p>
+</blockquote>
+</li>
+<li><p><strong>四次挥手</strong>：<br>第一次：client发送FIN<br>第二次：server发送ack<br>第三次：server发送FIN<br>第四次：client发送ack</p>
+<blockquote>
+<p>第二次和第三次为什么不能缩短为一次：因为起先双方既然建立了链接。那么，这个时候就不仅仅是只有Client才具有话语权。当Client示意要断开链接时只是它本身不在发送数据时，Server端此时仅能先回复说“好，我知道你不再发送数据了！”。但，有可能Server端此时有一个任务正主动向Client发数据，它必须得等任务结束，再进行第三次握手。所以，第二次跟第三次握手不能合为一次。简单说就是第二次跟第三次可能存在时间上的先后</p>
+</blockquote>
+</li>
+<li><p><strong>css垂直水平居中实现方式（待补充）</strong>：</p>
+<ul>
+<li>display：flex</li>
+<li><p>绝对定位</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span><span class="selector-pseudo">:absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span><span class="selector-pseudo">:50</span>%;</span><br><span class="line"><span class="selector-tag">left</span><span class="selector-pseudo">:50</span>%;</span><br><span class="line"><span class="selector-tag">transform</span><span class="selector-pseudo">:translateX(50</span>%);</span><br><span class="line"><span class="selector-tag">transform</span><span class="selector-pseudo">:translateY(50</span>%);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>transform:translate(百分比)：</strong>相对于元素自己的宽和高<br><strong><a href="https://segmentfault.com/a/1190000000590998" target="_blank" rel="noopener">css中的百分比</a></strong></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>四层模型</strong>：？？？</p>
+</li>
+<li><strong>vuex</strong>：</li>
+<li><p><strong>keep-alive</strong>：</p>
+<blockquote>
+<p><strong>场景：</strong>tab切换，想继续展示之前的内容，以避免反复重渲染导致的性能问题</p>
+</blockquote>
+<p> keep-alive元素将动态组件包裹起来    </p>
+</li>
+<li><p><strong>.sync修饰符</strong>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//父组件</span><br><span class="line"><span class="tag">&lt;<span class="name">text-document</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-bind:title</span>=<span class="string">"doc.title"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-on:update:title</span>=<span class="string">"doc.title = $event"</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">text-document</span>&gt;</span></span><br><span class="line">//子组件</span><br><span class="line">this.$emit('update:title', newTitle)</span><br></pre></td></tr></table></figure>
+<p> .sync实则以上的语法糖，实现父子数据双向绑定</p>
+</li>
+<li><strong>浏览器双核</strong>：<br>国内主流浏览器都会双核浏览器，基于webkit内核和基于ie内核<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//让IE以最高级模式渲染文档，强制IE使用Chrome Frame渲染</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge,chrome=1"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="腾讯电话面试"><a href="#腾讯电话面试" class="headerlink" title="腾讯电话面试"></a>腾讯电话面试</h2><ol>
+<li><strong>echart特点</strong>：<br>可视化框架还有哪些？d3.js highcharts.js<br>echart优缺点：简单易用，但可定制性差<br>d3.js：强大的可定制化，需要svg基础</li>
+<li><p><strong>attr和prop区别</strong>：</p>
+</li>
+<li><p><strong>http请求头响应头</strong>：</p>
+</li>
+<li><strong>db引擎和索引？？</strong>：</li>
+<li><strong>diff算法</strong>：</li>
+</ol>
+<h2 id="墨子"><a href="#墨子" class="headerlink" title="墨子"></a>墨子</h2><ol>
+<li><strong>CMD AMD UMD</strong>:</li>
+<li><strong>node.js事件流</strong></li>
+</ol>
+<h2 id="bitbank"><a href="#bitbank" class="headerlink" title="bitbank"></a>bitbank</h2><p>后续从微信笔记中迁移</p>
+<h2 id="四方精创"><a href="#四方精创" class="headerlink" title="四方精创"></a>四方精创</h2><p>后续从微信笔记中迁移</p>
+<h2 id="健康160"><a href="#健康160" class="headerlink" title="健康160"></a>健康160</h2><ol>
+<li><strong>数组去重</strong>：<ul>
+<li>indexOf==-1则push</li>
+<li>遍历排序后的数组，判断和前一个item相不相等，不相等push</li>
+<li>键值对</li>
+<li>es5 filter</li>
+</ul>
+</li>
+<li><strong>json</strong>：<ul>
+<li>也可能是数组</li>
+</ul>
+</li>
+<li><strong>keys</strong>：keys()/value()/entries()对象的静态方法，数组的成员方法</li>
+<li>axios拦截应用</li>
+<li>fiddle应用</li>
+<li>vue-router的hash模式和history模式</li>
+</ol>
+<h2 id="富士智能"><a href="#富士智能" class="headerlink" title="富士智能"></a>富士智能</h2><ol>
+<li><p><strong>arguments.callee和caller</strong></p>
+<ul>
+<li>arguments.callee:正在执行的函数，es5严格模式被禁止使用</li>
+<li>arguments.caller:函数被调用时所在的函数。已移除！可用函数对象Function.caller替代，全局调用时返回null;</li>
+</ul>
+</li>
+<li><p>jq的事件委托方法on/live/delegate</p>
+</li>
+<li>优雅降级和渐进增强</li>
+<li>css hack</li>
+<li></li>
+</ol>
+<h2 id="sixteen-market"><a href="#sixteen-market" class="headerlink" title="sixteen market"></a>sixteen market</h2><ol>
+<li><strong>拖拽原生实现</strong><br>在目标元素上触发mousedown事件<br>document mousemove<br>目标元素 mouseup<br>dragEle.style.left = ev.pageX + ‘px’;</li>
+<li><strong>for执行顺序</strong></li>
+<li><strong>三栏布局</strong><br>float left、right、main<br>position<br>圣杯布局，负margin对浮动元素的影响<br>双飞翼布局，同圣杯<br>flex,flex:1,order顺序控制</li>
+<li><strong>compiler</strong><br>深度优先遍历<br>判断nodeType，如果为textNode,正则匹配<code>\{\{\}\}</code>中绑定的变量，新增订阅者<br>如果为elementNode，判断attributes之中有没有v-bind等指令，新增订阅者，如果还有childNode，递归调用</li>
+<li><strong>css优先级</strong><br>!important<br>内联样式<br>id<br>class<br>标签选择</li>
+<li><strong>节点类型</strong><br>元素节点 1<br>属性节点 2<br>文本节点 3<br>注释节点 </li>
+<li><strong>filter</strong></li>
+<li><strong>mixins</strong><br>策略:分三种情况<br>数据选项<br>钩子<br>对象选项如methods/components…</li>
+</ol>
+<h2 id="腾讯二面（php）"><a href="#腾讯二面（php）" class="headerlink" title="腾讯二面（php）"></a>腾讯二面（php）</h2><ol>
+<li><strong>linux指令</strong><blockquote>
+<p>r 对当前文件夹下的所有文件递归操作<br>f force强制执行</p>
+</blockquote>
+</li>
+</ol>
+<p>文件权限<br>查看：ls -l或者ll<br>修改：chmod [u/g/o][+/-/=][r/w/x] 文件 或者 chmod -r 755 文件夹</p>
+<blockquote>
+<p>u owner<br>g 所属组<br>o other其他<br>r read，4<br>w write，2<br>x 执行权限，1</p>
+</blockquote>
+<blockquote>
+<p>777 所有者rwx,所属组rwx,其他人rwx<br>755 所有者rwx,所属组r-x,其他人r-x</p>
+</blockquote>
+<ol start="2">
+<li><p>sql注入及防御</p>
+</li>
+<li><p>sql，所有女同学的最近一次考试的平均成绩</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line"><span class="keyword">AVG</span>(p.<span class="string">`score`</span>)</span><br><span class="line">* <span class="keyword">FROM</span> student t <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> score p <span class="keyword">ON</span> t.<span class="string">`id`</span> = p.<span class="string">`student_id`</span> </span><br><span class="line"><span class="keyword">WHERE</span> t.<span class="string">`sex`</span> = <span class="number">1</span> <span class="keyword">AND</span> p.<span class="string">`date`</span> = (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="built_in">DATE</span>) <span class="keyword">FROM</span> score) <span class="keyword">GROUP</span> <span class="keyword">BY</span> p.<span class="string">`date`</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>网络协议</p>
+</li>
+</ol>
+<h2 id="客路"><a href="#客路" class="headerlink" title="客路"></a>客路</h2><ol>
+<li><p>随机打乱数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>],</span><br><span class="line">    len = arr.length,</span><br><span class="line">    newarr = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">    <span class="keyword">var</span> index = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*(len-i));</span><br><span class="line">    <span class="comment">//console.log(index);</span></span><br><span class="line">    <span class="keyword">var</span> item = arr.splice(index,<span class="number">1</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">    newarr = newarr.concat(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(newarr);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>filter<br>array.filter(callback)<br>callback对于那些已经被删除或者从未赋值的item不会调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">arr[<span class="number">10</span>] = <span class="number">10</span>;</span><br><span class="line">arr[<span class="number">9</span>] = <span class="literal">undefined</span>;</span><br><span class="line">arr.filter(<span class="function">(<span class="params">item</span>)=&gt;</span>&#123;<span class="keyword">return</span> item === <span class="literal">undefined</span>;&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>频繁搜索调用接口，展示最新的结果<br>xhr.abort()<br><a href="https://segmentfault.com/q/1010000012498572" target="_blank" rel="noopener">https://segmentfault.com/q/1010000012498572</a></p>
+</li>
+<li>前端错误监控</li>
+<li>a.js?version=hash和a.hash.js实现缓存机制的区别</li>
+</ol>
+<h2 id="微众银行"><a href="#微众银行" class="headerlink" title="微众银行"></a>微众银行</h2><ol>
+<li><p>移动端兼容问题<br>touch事件:只存在移动端<br>click事件:延迟大约300ms执行，原因是 浏览器需要区分 单击事件和双击屏幕缩放<br>touchstart =&gt; touchmove =&gt; touchend</p>
+</li>
+<li><p>路由守卫中获取to路由对应组件的实例<br>全局前置守卫beforeEach(to,form,next)<br>全局后置守卫afterEach(to)<br>组件内的守卫<br>beforeRouteEnter<br>beforeRouteUpdate<br>beforeRouteLeave</p>
+</li>
+<li>ul-&gt;li布局怎么实现以及横竖屏如何布局</li>
+</ol>
+<h2 id="微众银行-1"><a href="#微众银行-1" class="headerlink" title="微众银行"></a>微众银行</h2><h2 id="岩心"><a href="#岩心" class="headerlink" title="岩心"></a>岩心</h2><h2 id="奥哲"><a href="#奥哲" class="headerlink" title="奥哲"></a>奥哲</h2><ol>
+<li>keep-alive,生命周期</li>
+<li>webpack,插件打包成另一个chunk，？？</li>
+<li>v-once freezon</li>
+<li>面试题</li>
+<li>生命周期做的事情</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试总结/" rel="tag"># 面试总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/23/http/" rel="next" title="http">
+                <i class="fa fa-chevron-left"></i> http
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/23/性能优化/" rel="prev" title="性能优化">
+                性能优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">silviawxy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#小鹅通"><span class="nav-number">1.</span> <span class="nav-text">小鹅通</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#腾讯电话面试"><span class="nav-number">2.</span> <span class="nav-text">腾讯电话面试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#墨子"><span class="nav-number">3.</span> <span class="nav-text">墨子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bitbank"><span class="nav-number">4.</span> <span class="nav-text">bitbank</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四方精创"><span class="nav-number">5.</span> <span class="nav-text">四方精创</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#健康160"><span class="nav-number">6.</span> <span class="nav-text">健康160</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#富士智能"><span class="nav-number">7.</span> <span class="nav-text">富士智能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sixteen-market"><span class="nav-number">8.</span> <span class="nav-text">sixteen market</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#腾讯二面（php）"><span class="nav-number">9.</span> <span class="nav-text">腾讯二面（php）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客路"><span class="nav-number">10.</span> <span class="nav-text">客路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微众银行"><span class="nav-number">11.</span> <span class="nav-text">微众银行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微众银行-1"><span class="nav-number">12.</span> <span class="nav-text">微众银行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#岩心"><span class="nav-number">13.</span> <span class="nav-text">岩心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奥哲"><span class="nav-number">14.</span> <span class="nav-text">奥哲</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silviawxy</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
