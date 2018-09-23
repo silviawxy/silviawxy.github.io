@@ -286,7 +286,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="silviawxy">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -443,7 +443,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="silviawxy">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -458,7 +458,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/2018/09/23/性能优化/" itemprop="url">
-                  性能优化
+                  性能优化(未完待续)
                 </a>
               
             
@@ -484,7 +484,7 @@
                 
               
 
-              <time title="创建时间：2018-09-23 15:42:56 / 修改时间：15:43:36" itemprop="dateCreated datePublished" datetime="2018-09-23T15:42:56+08:00">2018-09-23</time>
+              <time title="创建时间：2018-09-23 15:42:56 / 修改时间：22:53:18" itemprop="dateCreated datePublished" datetime="2018-09-23T15:42:56+08:00">2018-09-23</time>
             
 
             
@@ -527,24 +527,21 @@
             <h2 id="1-http请求数量"><a href="#1-http请求数量" class="headerlink" title="1. http请求数量"></a>1. http请求数量</h2><p>合并。举个栗子：css精灵图</p>
 <h2 id="2-http请求大小"><a href="#2-http请求大小" class="headerlink" title="2. http请求大小"></a>2. http请求大小</h2><p>压缩。<br>举个例子：webpack插件UglifyJsPlugin、<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">optimization:&#123;</span><br><span class="line">	minimizer:&#123;</span><br><span class="line">		<span class="keyword">new</span> UglifyJsPlugin(&#123;...&#125;),</span><br><span class="line">		<span class="keyword">new</span> </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="3-css方面"><a href="#3-css方面" class="headerlink" title="3. css方面"></a>3. css方面</h2><ul>
-<li>减少回流reflow（reflow与repaint的区别）<blockquote>
-<p>方式：</p>
-</blockquote>
-</li>
+<li>减少回流reflow（reflow与repaint的区别）<br>  方式：<pre><code>1. 减少布局方式的样式修改。举个栗子：隐藏显示
+2. 通过把样式放到class中，一次性更改样式
+</code></pre></li>
 </ul>
-<ol>
-<li>减少布局方式的样式修改。举个栗子：隐藏显示</li>
-<li>通过把样式放到class中，一次性更改样式</li>
-</ol>
 <h2 id="4-dom操作上"><a href="#4-dom操作上" class="headerlink" title="4. dom操作上"></a>4. dom操作上</h2><ul>
 <li>插入createDocumentFrament()。在dom添加新节点的时候，先存在文档片段中，再一次性添加到DOM中。</li>
 <li>使用innerHTML而不是appendChild</li>
 <li>缓存elementCollection，文档查询代价高</li>
-<li>vnode思想<h2 id="5-其他资源，如图片资源"><a href="#5-其他资源，如图片资源" class="headerlink" title="5. 其他资源，如图片资源"></a>5. 其他资源，如图片资源</h2></li>
-<li>css精灵图</li>
-<li>懒加载、预加载<h2 id="6-事件"><a href="#6-事件" class="headerlink" title="6. 事件"></a>6. 事件</h2>事件代理，利用事件冒泡，为顶层元素绑定事件处理程序，就可以处理所有子元素的事件<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//跨浏览器实现</span></span><br><span class="line"><span class="comment">//获取事件对象</span></span><br><span class="line">ev= ev || <span class="built_in">window</span>.event;</span><br><span class="line"><span class="comment">//禁止传播，冒泡/捕获</span></span><br><span class="line"><span class="keyword">if</span>(ev.stopPropogation)&#123;</span><br><span class="line">	ev.stopPropogation();</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	ev.cancleBubble = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//阻止默认行为</span></span><br><span class="line"><span class="keyword">if</span>(ev.preventDefalut)&#123;</span><br><span class="line">	ev.preventDefault();</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	ev.returnValue = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>vnode思想</li>
 </ul>
+<h2 id="5-其他资源，如图片资源"><a href="#5-其他资源，如图片资源" class="headerlink" title="5. 其他资源，如图片资源"></a>5. 其他资源，如图片资源</h2><ul>
+<li>css精灵图</li>
+<li>懒加载、预加载</li>
+</ul>
+<h2 id="6-事件"><a href="#6-事件" class="headerlink" title="6. 事件"></a>6. 事件</h2><p>事件代理，利用事件冒泡，为顶层元素绑定事件处理程序，就可以处理所有子元素的事件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//跨浏览器实现</span></span><br><span class="line"><span class="comment">//获取事件对象</span></span><br><span class="line">ev= ev || <span class="built_in">window</span>.event;</span><br><span class="line"><span class="comment">//禁止传播，冒泡/捕获</span></span><br><span class="line"><span class="keyword">if</span>(ev.stopPropogation)&#123;</span><br><span class="line">	ev.stopPropogation();</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	ev.cancleBubble = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//阻止默认行为</span></span><br><span class="line"><span class="keyword">if</span>(ev.preventDefalut)&#123;</span><br><span class="line">	ev.preventDefault();</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	ev.returnValue = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="7-js语法"><a href="#7-js语法" class="headerlink" title="7. js语法"></a>7. js语法</h2><ul>
 <li>多个if-else使用switch-case替代，按照最可能到最不可能排序；</li>
 <li>优化循环<ol>
@@ -552,18 +549,17 @@
 <li>如果循环至少执行一次，可以考虑后循环测试即do-while，可以避免第一次的循环条件测试；</li>
 <li>如果循环次数确定，可以考虑展开循环体，避免了创建循环和条件测试的开销；</li>
 <li>如果循环次数较大，可以考虑duff装置（减少迭代次数，一次迭代运行多次当个循环体）；</li>
-<li>条件（不在乎顺序，且循环次数确定）满足的情况下，选择减值迭代：<br>展开循环（循环次数已知且较少）<br><a href="http://zhouyihui2010.iteye.com/blog/1836699" target="_blank" rel="noopener">http://zhouyihui2010.iteye.com/blog/1836699</a></li>
+<li>条件（不在乎顺序，且循环次数确定）满足的情况下，选择减值迭代：<br>展开循环（循环次数已知且较少）<a href="http://zhouyihui2010.iteye.com/blog/1836699" target="_blank" rel="noopener">参考</a><blockquote>
+<p>DUff装置（循环次数不能确定，数据量大）核心：将“零头”与“整数”分成两个单独的do-while循环</p>
+</blockquote>
+</li>
 </ol>
 </li>
 </ul>
-<blockquote>
-<p>DUff装置（循环次数不能确定，数据量大）核心：将“零头”与“整数”分成两个单独的do-while循环</p>
-</blockquote>
 <ul>
 <li>多个变量声明只使用一次var关键字（语句数量会影响效率，尽量合并语句）</li>
 </ul>
-<p>#单页应用首屏优化</p>
-<ul>
+<h1 id="单页应用首屏优化"><a href="#单页应用首屏优化" class="headerlink" title="单页应用首屏优化"></a>单页应用首屏优化</h1><ul>
 <li>路由懒加载，使用动态import语法<br>使用命名chunk可以 实现某个路由下所有组件打包到用一个异步块中。特殊的注释语法来提供chunkname</li>
 <li>缓存：chunkhash和hash的区别</li>
 <li>代码分割<br>css分割，ExtractTextPlugin</li>
@@ -627,7 +623,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="silviawxy">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -908,7 +904,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="silviawxy">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1094,6 +1090,10 @@
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="silviawxy" />
             
               <p class="site-author-name" itemprop="name">silviawxy</p>
               <p class="site-description motion-element" itemprop="description"></p>
