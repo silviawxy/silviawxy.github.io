@@ -281,6 +281,493 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/28/ES6之class/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="silviawxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="way 2 explore">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/28/ES6之class/" itemprop="url">
+                  ES6之class
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-28 17:39:03 / 修改时间：19:37:39" itemprop="dateCreated datePublished" datetime="2018-09-28T17:39:03+08:00">2018-09-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ES6之class"><a href="#ES6之class" class="headerlink" title="ES6之class"></a>ES6之class</h1><h2 id="ES6中class-extends实现继承与ES5实现继承的区别"><a href="#ES6中class-extends实现继承与ES5实现继承的区别" class="headerlink" title="ES6中class+extends实现继承与ES5实现继承的区别"></a><a href="http://keenwon.com/1524.html" target="_blank" rel="noopener">ES6中class+extends实现继承与ES5实现继承的区别</a></h2><p><img src="../images/es5继承.png" alt="es5继承"><br><img src="../images/es6继承.png" alt="es6继承"></p>
+<h2 id="一、私有属性和私有方法的实现"><a href="#一、私有属性和私有方法的实现" class="headerlink" title="一、私有属性和私有方法的实现"></a>一、私有属性和私有方法的实现</h2><ul>
+<li><h3 id="ES5"><a href="#ES5" class="headerlink" title="ES5"></a>ES5</h3></li>
+<li><h3 id="ES6变通的方式模拟实现"><a href="#ES6变通的方式模拟实现" class="headerlink" title="ES6变通的方式模拟实现"></a>ES6变通的方式模拟实现</h3></li>
+</ul>
+<ol>
+<li><p>命名上使用_</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    publicMethod()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'i am public method'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    _privateMethod()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'i am private method'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义在外部</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    bar()&#123;</span><br><span class="line">        baz.call(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">baz</span>(<span class="params"></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>symbol唯一性<br> 待开拓…</p>
+</li>
+</ol>
+<ul>
+<li><h3 id="新提案"><a href="#新提案" class="headerlink" title="新提案"></a>新提案</h3><h4 id="表示"><a href="#表示" class="headerlink" title="#表示"></a>#表示</h4>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    #prop = 'i am 私有属性';</span><br><span class="line">    #method()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'i am 私有方法'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="二、静态属性和静态方法的实现"><a href="#二、静态属性和静态方法的实现" class="headerlink" title="二、静态属性和静态方法的实现"></a>二、静态属性和静态方法的实现</h2><ul>
+<li><h3 id="ES5-1"><a href="#ES5-1" class="headerlink" title="ES5"></a>ES5</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">Person.blood = <span class="string">"red"</span>;</span><br><span class="line">Person.getEyes = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="ES6，class内部只有静态方法，没有静态属性"><a href="#ES6，class内部只有静态方法，没有静态属性" class="headerlink" title="ES6，class内部只有静态方法，没有静态属性"></a>ES6，class内部只有静态方法，没有静态属性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> classMethod()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'i am 静态方法'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Foo.prop = <span class="string">'i am 静态属性'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="新提案-1"><a href="#新提案-1" class="headerlink" title="新提案"></a>新提案</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Foo&#123;</span><br><span class="line">    static prop = 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/同源策略及解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="silviawxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="way 2 explore">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/25/同源策略及解决方案/" itemprop="url">
+                  同源策略及解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-25 19:44:24" itemprop="dateCreated datePublished" datetime="2018-09-25T19:44:24+08:00">2018-09-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-27 23:37:41" itemprop="dateModified" datetime="2018-09-27T23:37:41+08:00">2018-09-27</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="什么是同源策略"><a href="#什么是同源策略" class="headerlink" title="什么是同源策略"></a>什么是同源策略</h1><h2 id="出处"><a href="#出处" class="headerlink" title="出处"></a>出处</h2><p>浏览器的同源策略，服务器端是没有同源策略的</p>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> script标签的src</li>
+<li style="list-style: none"><input type="checkbox" checked> img的src</li>
+<li style="list-style: none"><input type="checkbox" checked> iframe的src</li>
+<li style="list-style: none"><input type="checkbox" checked> link的href</li>
+</ul>
+<p>是不受同源策略限制的</p>
+<h2 id="存在的合理性"><a href="#存在的合理性" class="headerlink" title="存在的合理性"></a>存在的合理性</h2><p>浏览器的同源策略出于对cooKie安全性的考虑</p>
+<h2 id="不存在的话存在什么样的问题"><a href="#不存在的话存在什么样的问题" class="headerlink" title="不存在的话存在什么样的问题"></a>不存在的话存在什么样的问题</h2><h2 id="源是什么，怎么样就算跨域，跟谁比较"><a href="#源是什么，怎么样就算跨域，跟谁比较" class="headerlink" title="源是什么，怎么样就算跨域，跟谁比较"></a>源是什么，怎么样就算跨域，跟谁比较</h2><p><strong>源</strong>：<br>window.location.origin = protocol+host+port<br>origin不一样</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="情况一：跨域调用接口请求数据"><a href="#情况一：跨域调用接口请求数据" class="headerlink" title="情况一：跨域调用接口请求数据"></a>情况一：跨域调用接口请求数据</h2><h3 id="1-jsonp"><a href="#1-jsonp" class="headerlink" title="1.jsonp"></a>1.jsonp</h3><p><strong>原理</strong>：script标签不受同源策略限制<br><strong>缺点</strong>：只支持get请求<br><strong>现成库</strong>：</p>
+<h3 id="2-cors-cross-origin-resource-share跨域资源共享"><a href="#2-cors-cross-origin-resource-share跨域资源共享" class="headerlink" title="2.cors(cross origin resource share跨域资源共享)"></a>2.cors(cross origin resource share跨域资源共享)</h3><p><strong>实现机制</strong>：<br>浏览器自动实现，不需要前端开发者做额外的工作，跟普通ajax请求一样，只是(<strong>后面重点</strong>)：当浏览器检测到ajax的url跨域时，会自动附加一些请求头（Origin本次请求来自的源），甚至会多发一次请求option。</p>
+<blockquote>
+<p><strong>option请求的作用</strong>：查询指定url支持的方法。会返回Allow:get,post,head这样的内容。</p>
+</blockquote>
+<p>所以，实现cors的关键是，服务器。只要服务器实现了cors接口，就能进行跨域通信。</p>
+<h3 id="3-代理服务器"><a href="#3-代理服务器" class="headerlink" title="3.代理服务器"></a>3.代理服务器</h3><p><strong>原理</strong>：服务器不受同源策略的限制<br>举个栗子：webpack-dev-server配置proxy</p>
+<h2 id="情况二：iframe传递数据"><a href="#情况二：iframe传递数据" class="headerlink" title="情况二：iframe传递数据"></a>情况二：iframe传递数据</h2>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/23/备忘推送实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="silviawxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="way 2 explore">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/23/备忘推送实现/" itemprop="url">
+                  备忘推送实现
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-23 23:14:16 / 修改时间：23:23:07" itemprop="dateCreated datePublished" datetime="2018-09-23T23:14:16+08:00">2018-09-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>步骤：</strong></p>
+<ol>
+<li>一登录请求 最近一条备忘</li>
+<li>建立定时任务<pre><code class="javascript">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+ <span class="comment">//回调做的事：</span>
+ <span class="number">1.</span> 判断当前会话是否超时
+ <span class="number">2.</span> 未超时就弹备忘
+ <span class="number">3.</span> 弹备忘后，请求 备忘确认接口，后台返回 最近一条备忘，setTimeout
+}，后台返回的时间间隔)
+</code></pre>
+</li>
+</ol>
+<blockquote>
+<p>注意：<br>    如果期间有 备忘的增删改查，前端会根据后台的返回，替换定时任务。<br>    登出操作（包括用户主动注销和会话超时）时，清除定时任务。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/23/继承/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -945,12 +1432,24 @@
                 
               
 
-              <time title="创建时间：2018-09-23 14:09:55 / 修改时间：16:16:44" itemprop="dateCreated datePublished" datetime="2018-09-23T14:09:55+08:00">2018-09-23</time>
+              <time title="创建时间：2018-09-23 14:09:55" itemprop="dateCreated datePublished" datetime="2018-09-23T14:09:55+08:00">2018-09-23</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-25 19:44:56" itemprop="dateModified" datetime="2018-09-25T19:44:56+08:00">2018-09-25</time>
               
             
           </span>
@@ -1106,7 +1605,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1129,7 +1628,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
