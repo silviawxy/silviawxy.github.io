@@ -108,20 +108,24 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="way 2 explore">
-<meta property="og:url" content="http://yoursite.com/tags/前端基础-经典面试题/index.html">
+  <meta name="description" content="process传参相关 process.argv 123456[   &amp;apos;C:\\Program Files\\nodejs\\node.exe&amp;apos;,//node安装目录  &amp;apos;C:\\pro\\mutipage-proj\\build\\dev.js&amp;apos;,//当前执行js的路径  &amp;apos;a=b&amp;apos;,//通过package.json中的script传参">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node.js学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/10/15/node-js学习笔记/index.html">
 <meta property="og:site_name" content="way 2 explore">
+<meta property="og:description" content="process传参相关 process.argv 123456[   &amp;apos;C:\\Program Files\\nodejs\\node.exe&amp;apos;,//node安装目录  &amp;apos;C:\\pro\\mutipage-proj\\build\\dev.js&amp;apos;,//当前执行js的路径  &amp;apos;a=b&amp;apos;,//通过package.json中的script传参">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-15T11:25:06.982Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="way 2 explore">
+<meta name="twitter:title" content="node.js学习笔记">
+<meta name="twitter:description" content="process传参相关 process.argv 123456[   &amp;apos;C:\\Program Files\\nodejs\\node.exe&amp;apos;,//node安装目录  &amp;apos;C:\\pro\\mutipage-proj\\build\\dev.js&amp;apos;,//当前执行js的路径  &amp;apos;a=b&amp;apos;,//通过package.json中的script传参">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/前端基础-经典面试题/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/15/node-js学习笔记/"/>
 
 
 
@@ -131,7 +135,7 @@
   };
 </script>
 
-  <title>标签: 前端基础 经典面试题 | way 2 explore</title>
+  <title>node.js学习笔记 | way 2 explore</title>
   
 
 
@@ -178,7 +182,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -260,75 +264,173 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>前端基础 经典面试题<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/15/node-js学习笔记/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="silviawxy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="way 2 explore">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/09/23/继承/" itemprop="url">
-              
-                <span itemprop="name">继承</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">node.js学习笔记
+              
+            
+          </h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-23T15:44:12+08:00"
-              content="2018-09-23" >
-          09-23
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-15 19:24:07 / 修改时间：19:25:06" itemprop="dateCreated datePublished" datetime="2018-10-15T19:24:07+08:00">2018-10-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="process"><a href="#process" class="headerlink" title="process"></a>process</h2><h3 id="传参相关"><a href="#传参相关" class="headerlink" title="传参相关"></a>传参相关</h3><ol>
+<li><p>process.argv</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[ </span><br><span class="line">  &apos;C:\\Program Files\\nodejs\\node.exe&apos;,//node安装目录</span><br><span class="line">  &apos;C:\\pro\\mutipage-proj\\build\\dev.js&apos;,//当前执行js的路径</span><br><span class="line">  &apos;a=b&apos;,//通过package.json中的script传参，比如node build/dev.js a=b</span><br><span class="line">  &apos;proj=csr&apos; //通过npm命令传参，比如npm run dev proj=csr</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>process.env.npm_config_argv</p>
+</li>
+</ol>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/15/服务器端渲染与客户端渲染/" rel="next" title="服务器端渲染与客户端渲染">
+                <i class="fa fa-chevron-left"></i> 服务器端渲染与客户端渲染
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -349,8 +451,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -424,6 +535,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#process"><span class="nav-number">1.</span> <span class="nav-text">process</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传参相关"><span class="nav-number">1.1.</span> <span class="nav-text">传参相关</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -561,6 +688,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
 
   
 
