@@ -108,25 +108,24 @@
 
 
 
-  <meta name="description" content="目标：实现sub函数继承super函数  原型链12//关键代码sub.prototype = new super(); 缺点：  无法在不影响sub所有对象实例的情况下，给super的构造函数传参 引用类型值的super原型属性会被所有sub实例共享  调用构造函数，改this123function sub()&amp;#123;	super.call(this,参数)&amp;#125;  要点：相当于把s">
-<meta name="keywords" content="前端基础 经典面试题">
+  <meta name="description" content="vue2.0数据绑定原理123456789101112131415161718192021222324252627282930313233343536373839404142let data = &amp;#123; price: 5, quantity: 2 &amp;#125;let target = nullclass Dep &amp;#123;  constructor () &amp;#123;    this.su">
 <meta property="og:type" content="article">
-<meta property="og:title" content="继承">
-<meta property="og:url" content="http://yoursite.com/2018/09/23/继承/index.html">
+<meta property="og:title" content="vue2.X数据绑定原理">
+<meta property="og:url" content="http://yoursite.com/2018/10/17/vue2-X数据绑定原理/index.html">
 <meta property="og:site_name" content="way 2 explore">
-<meta property="og:description" content="目标：实现sub函数继承super函数  原型链12//关键代码sub.prototype = new super(); 缺点：  无法在不影响sub所有对象实例的情况下，给super的构造函数传参 引用类型值的super原型属性会被所有sub实例共享  调用构造函数，改this123function sub()&amp;#123;	super.call(this,参数)&amp;#125;  要点：相当于把s">
+<meta property="og:description" content="vue2.0数据绑定原理123456789101112131415161718192021222324252627282930313233343536373839404142let data = &amp;#123; price: 5, quantity: 2 &amp;#125;let target = nullclass Dep &amp;#123;  constructor () &amp;#123;    this.su">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-23T07:45:08.669Z">
+<meta property="og:updated_time" content="2018-10-17T11:26:59.495Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="继承">
-<meta name="twitter:description" content="目标：实现sub函数继承super函数  原型链12//关键代码sub.prototype = new super(); 缺点：  无法在不影响sub所有对象实例的情况下，给super的构造函数传参 引用类型值的super原型属性会被所有sub实例共享  调用构造函数，改this123function sub()&amp;#123;	super.call(this,参数)&amp;#125;  要点：相当于把s">
+<meta name="twitter:title" content="vue2.X数据绑定原理">
+<meta name="twitter:description" content="vue2.0数据绑定原理123456789101112131415161718192021222324252627282930313233343536373839404142let data = &amp;#123; price: 5, quantity: 2 &amp;#125;let target = nullclass Dep &amp;#123;  constructor () &amp;#123;    this.su">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/23/继承/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/17/vue2-X数据绑定原理/"/>
 
 
 
@@ -136,7 +135,7 @@
   };
 </script>
 
-  <title>继承 | way 2 explore</title>
+  <title>vue2.X数据绑定原理 | way 2 explore</title>
   
 
 
@@ -285,7 +284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/23/继承/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/vue2-X数据绑定原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="silviawxy">
@@ -302,7 +301,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">继承
+          <h1 class="post-title" itemprop="name headline">vue2.X数据绑定原理
               
             
           </h1>
@@ -327,7 +326,7 @@
                 
               
 
-              <time title="创建时间：2018-09-23 15:44:12 / 修改时间：15:45:08" itemprop="dateCreated datePublished" datetime="2018-09-23T15:44:12+08:00">2018-09-23</time>
+              <time title="创建时间：2018-10-17 19:26:27 / 修改时间：19:26:59" itemprop="dateCreated datePublished" datetime="2018-10-17T19:26:27+08:00">2018-10-17</time>
             
 
             
@@ -365,24 +364,14 @@
       
 
       
-        <blockquote>
-<p>目标：实现sub函数继承super函数</p>
-</blockquote>
-<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//关键代码</span></span><br><span class="line">sub.prototype = <span class="keyword">new</span> <span class="keyword">super</span>();</span><br></pre></td></tr></table></figure>
-<p>缺点：</p>
+        <h1 id="vue2-0数据绑定原理"><a href="#vue2-0数据绑定原理" class="headerlink" title="vue2.0数据绑定原理"></a>vue2.0数据绑定原理</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = &#123; <span class="attr">price</span>: <span class="number">5</span>, <span class="attr">quantity</span>: <span class="number">2</span> &#125;</span><br><span class="line"><span class="keyword">let</span> target = <span class="literal">null</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dep</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> () &#123;</span><br><span class="line">    <span class="keyword">this</span>.subscribers = []</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//记录target</span></span><br><span class="line">  depend () &#123;</span><br><span class="line">    <span class="keyword">if</span> (target &amp;&amp; !<span class="keyword">this</span>.subscribers.includes(target)) &#123;</span><br><span class="line">      <span class="keyword">this</span>.subscribers.push(target) </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//调用每一个target</span></span><br><span class="line">  notify () &#123;</span><br><span class="line">    <span class="keyword">this</span>.subscribers.forEach(<span class="function"><span class="params">sub</span> =&gt;</span> sub())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Object</span>.keys(data).forEach(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> internalValue = data[key]</span><br><span class="line">  <span class="comment">//为该属性添加依赖类</span></span><br><span class="line">  <span class="keyword">const</span> dep = <span class="keyword">new</span> Dep()</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(data, key, &#123;</span><br><span class="line">    get() &#123;</span><br><span class="line">      dep.depend()</span><br><span class="line">      <span class="keyword">return</span> internalValue</span><br><span class="line">    &#125;,</span><br><span class="line">    set(newVal) &#123;</span><br><span class="line">      internalValue = newVal</span><br><span class="line">      dep.notify()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">watcher</span>(<span class="params">myFun</span>) </span>&#123;</span><br><span class="line"><span class="comment">//全局属性target</span></span><br><span class="line">  target = myFun</span><br><span class="line">  target()</span><br><span class="line">  target = <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line">watcher(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  data.total = data.price * data.quantity</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data.total</span><br><span class="line">10</span><br><span class="line">data.price = 20</span><br><span class="line">data.total</span><br><span class="line">40</span><br></pre></td></tr></table></figure>
+<p>步骤解析：</p>
 <ol>
-<li>无法在不影响sub所有对象实例的情况下，给super的构造函数传参</li>
-<li>引用类型值的super原型属性会被所有sub实例共享</li>
+<li>调用target，执行data.total = data.price * data.quantity，触发data.price的getter，执行dep.depand()，将target记录下来，data.quantity同理</li>
+<li>data.price = 20触发data.price的setter，执行dep.notify()，将subscribers中记录的每一个target执行一次。</li>
 </ol>
-<h2 id="调用构造函数，改this"><a href="#调用构造函数，改this" class="headerlink" title="调用构造函数，改this"></a>调用构造函数，改this</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sub</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">super</span>.call(<span class="keyword">this</span>,参数)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>要点：相当于把super构造函数复制到sub构造函数中执行<br>新创建的sub对象上执行super函数中的所有对象初始化代码，所以！sub的每个实例都会有自己的属性（和super一样的属性）副本了。</p>
-</blockquote>
-<p>缺点：</p>
-<ol>
-<li>只能继承super的成员方法，无法继承super原型</li>
-</ol>
-<h2 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sub</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">super</span>.call(<span class="keyword">this</span>,参数)</span><br><span class="line">&#125;</span><br><span class="line">sub.prototype = <span class="keyword">new</span> <span class="keyword">super</span>();</span><br><span class="line"><span class="comment">//sub原型的consructor 属性指向自己</span></span><br><span class="line">sub.prototype.consructor = sub;</span><br><span class="line"><span class="comment">//新增公用方法</span></span><br><span class="line">sub.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://mp.weixin.qq.com/s/qeo3y8l3tGgVeA4oJbWc_g" target="_blank" rel="noopener">参考</a></p>
 
       
     </div>
@@ -401,12 +390,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/前端基础-经典面试题/" rel="tag"># 前端基础 经典面试题</a>
-          
-        </div>
-      
 
       
       
@@ -416,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/23/性能优化/" rel="next" title="性能优化(未完待续)">
-                <i class="fa fa-chevron-left"></i> 性能优化(未完待续)
+              <a href="/2018/10/15/node-js学习笔记/" rel="next" title="node.js学习笔记">
+                <i class="fa fa-chevron-left"></i> node.js学习笔记
               </a>
             
           </div>
@@ -425,10 +408,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/23/备忘推送实现/" rel="prev" title="备忘推送实现">
-                备忘推送实现 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -567,7 +546,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原型链"><span class="nav-number">1.</span> <span class="nav-text">原型链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用构造函数，改this"><span class="nav-number">2.</span> <span class="nav-text">调用构造函数，改this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合继承"><span class="nav-number">3.</span> <span class="nav-text">组合继承</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vue2-0数据绑定原理"><span class="nav-number">1.</span> <span class="nav-text">vue2.0数据绑定原理</span></a></li></ol></div>
             
 
           </div>
